@@ -5,7 +5,7 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  // OPA
+  // O
 }
 
 module.exports = { calculateEntry, countEntrants };
