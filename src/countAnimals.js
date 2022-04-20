@@ -5,9 +5,9 @@ const animals = Object.values(objeto);
 
 const getAnimals = (nome , sex) => {}
 
-//const countAnimals = () => {}
-//const arrayItens = (nome) => objeto.forEach(nomess => {console.log({name:nome}.includes(nomess))});
+// const countAnimals = () => {}
+// const arrayItens = (nome) => objeto.forEach(nomess => {console.log({name:nome}.includes(nomess))});
 
-//countAnimals(arrayItens('lions'));
+// countAnimals(arrayItens('lions'));
 
-//module.exports = countAnimals;
+module.exports = countAnimals;
