@@ -8,14 +8,21 @@ const data = require('../data/zoo_data');
 countAnimalsBySpecie({specie: 'tigers'}); */
 
 //contagem por especie e sexo
-const countAnimalsBySex = (sexo) => {species.forEach(element => {
-  const residentes = element.residents;
-  residentes.sex === Object.values(sexo) ? console.log('opa') : console.log('1')})};
-
-countAnimalsBySex({sex: 'female'});
+/* const countAnimalsBySex = (sexo) => { species.forEach(element => {
+  function sexoAnimal () { element.residents.forEach((sex) => sex === Object.keys(sexo))}
+  const filtrado = species.filter(sexoAnimal);
+  console.log(filtrado)})};
+countAnimalsBySex({sex: 'female'}); */
 
 //caso não haja parametro
   /* if (especie.length = 0){ 
     species.forEach(element => { console.log(element.name + ' ' + element.residents.length)})} */
+
+//const countAnimals = ;
+function countAnimalsBySpecie (especie) {
+  let especieAchada = species.find((item) => item.name === especie);
+  return especieAchada.residents.length;
+}
+countAnimalsBySpecie('tigers');
 
 //module.exports = countAnimals;
