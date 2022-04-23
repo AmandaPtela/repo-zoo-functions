@@ -14,7 +14,6 @@ function countAnimalsBySex (animal, sexo) {
   return(arrayAnimais.length);
 }
 //countAnimalsBySex('lions', 'male');
-
 function countEverything () {
   let reduzido = species.reduce((acumulador, item) => {
     acumulador[item.name] = countAnimalsBySpecie(item.name);
@@ -22,8 +21,8 @@ function countEverything () {
   } , {})
   return reduzido;
 }
-//countEverything();
 
+//countEverything();
 function countAnimals(object) {
   if (!object) {
     return (countEverything());
