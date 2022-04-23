@@ -9,7 +9,7 @@ function countAnimalsBySpecie(especie) {
 // find by se
 function countAnimalsBySex(animal, sexo) {
   const animalEncontrado = species.find((item) => item.name === animal);
-  let arrayAnimais = animalEncontrado.residents.filter((item) => item.sex === sexo);
+  const arrayAnimais = animalEncontrado.residents.filter((item) => item.sex === sexo);
   return (arrayAnimais.length);
 }
 
@@ -18,21 +18,17 @@ function countEverything() {
   const reduzido = species.reduce((acumulador, item) => {
     acumulador[item.name] = countAnimalsBySpecie(item.name);
     return acumulador;
-  }, {})
+  }, {});
   return reduzido;
 }
 
 // countEverything();
 function countAnimals(object) {
   if (!object) {
-    return (countEverything());
-  }
+    return (countEverything());}
   else if (object.specie && object.sex) {
-    return (countAnimalsBySex(object.specie, object.sex));
-  }
-  else {
-    return (countAnimalsBySpecie(object.specie));
-  }
+    return (countAnimalsBySex(object.specie, object.sex));}
+  return (countAnimalsBySpecie(object.specie));
 }
 countAnimals({ specie: 'penguins', sex: 'male' })
 module.exports = countAnimals;
