@@ -31,6 +31,6 @@ function countAnimals(object) {
   } else if (object.specie && object.sex) {
     return countAnimalsBySex(object.specie, object.sex);
   }  return countAnimalsBySpecie(object.specie);
-}
-countAnimals({ specie: "penguins", sex: "male" });
+ }
+countAnimals({ specie: 'penguins', sex: 'male' });
 module.exports = countAnimals;
