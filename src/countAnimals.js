@@ -1,5 +1,5 @@
-const { species } = require('../data/zoo_data');
-const data = require('../data/zoo_data');
+const { species } = require("../data/zoo_data");
+const data = require("../data/zoo_data");
 
 function countAnimalsBySpecie(especie) {
   const especieAchada = species.find((item) => item.name === especie);
@@ -9,8 +9,10 @@ function countAnimalsBySpecie(especie) {
 // find by se
 function countAnimalsBySex(animal, sexo) {
   const animalEncontrado = species.find((item) => item.name === animal);
-  const arrayAnimais = animalEncontrado.residents.filter((item) => item.sex === sexo);
-  return (arrayAnimais.length);
+  const arrayAnimais = animalEncontrado.residents.filter(
+    (item) => item.sex === sexo
+  );
+  return arrayAnimais.length;
 }
 
 // countAnimalsBySex('lions', 'male');
@@ -25,10 +27,10 @@ function countEverything() {
 // countEverything();
 function countAnimals(object) {
   if (!object) {
-    return (countEverything());}
-  else if (object.specie && object.sex) {
-    return (countAnimalsBySex(object.specie, object.sex));}
-  return (countAnimalsBySpecie(object.specie));
+    return countEverything();
+  } else if (object.specie && object.sex) {
+    return countAnimalsBySex(object.specie, object.sex);
+  }  return countAnimalsBySpecie(object.specie);
 }
-countAnimals({ specie: 'penguins', sex: 'male' })
+countAnimals({ specie: "penguins", sex: "male" });
 module.exports = countAnimals;
