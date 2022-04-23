@@ -1,24 +1,24 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function countAnimalsBySpecie (especie) {
+function countAnimalsBySpecie(especie) {
   let especieAchada = species.find((item) => item.name === especie);
   return especieAchada.residents.length;
 }
-//countAnimalsBySpecie('tigers');
 
 //find by sex
-function countAnimalsBySex (animal, sexo) {
+function countAnimalsBySex(animal, sexo) {
   let animalEncontrado = species.find((item) => item.name === animal);
   let arrayAnimais = animalEncontrado.residents.filter((item) => item.sex === sexo);
-  return(arrayAnimais.length);
+  return (arrayAnimais.length);
 }
+
 //countAnimalsBySex('lions', 'male');
-function countEverything () {
+function countEverything() {
   let reduzido = species.reduce((acumulador, item) => {
     acumulador[item.name] = countAnimalsBySpecie(item.name);
     return acumulador;
-  } , {})
+  }, {})
   return reduzido;
 }
 
@@ -27,12 +27,12 @@ function countAnimals(object) {
   if (!object) {
     return (countEverything());
   }
-  else if (object.specie && object.sex){
+  else if (object.specie && object.sex) {
     return (countAnimalsBySex(object.specie, object.sex));
   }
   else {
     return (countAnimalsBySpecie(object.specie));
   }
 }
-countAnimals({ specie: 'penguins' , sex: 'male' })
+countAnimals({ specie: 'penguins', sex: 'male' })
 module.exports = countAnimals;
