@@ -1,5 +1,5 @@
-const { species } = require("../data/zoo_data");
-const data = require("../data/zoo_data");
+const { species } = require('../data/zoo_data');
+const data = require('../data/zoo_data');
 
 function countAnimalsBySpecie(especie) {
   const especieAchada = species.find((item) => item.name === especie);
@@ -30,7 +30,7 @@ function countAnimals(object) {
     return countEverything();
   } else if (object.specie && object.sex) {
     return countAnimalsBySex(object.specie, object.sex);
-  }  return countAnimalsBySpecie(object.specie);
- }
+  } return countAnimalsBySpecie(object.specie);
+}
 countAnimals({ specie: 'penguins', sex: 'male' });
 module.exports = countAnimals;
