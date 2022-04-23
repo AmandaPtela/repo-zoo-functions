@@ -3,10 +3,10 @@ const data = require('../data/zoo_data');
 
 const getSpeciesByIds = (id) => {
     const ids = species.find((item) => item.id === id);
-    if (id){
+    if (id) {
         console.log(ids)
     }
-    if (!id){
+    if (!id) {
         console.log([]);
     }
 }
