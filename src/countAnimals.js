@@ -25,4 +25,15 @@ function countAnimalsBySpecie (especie) {
 }
 countAnimalsBySpecie('tigers');
 
+//find by sex
+function countAnimalsBySex (animal, sexo) {
+  let animalEncontrado = species.find((item) => item.name === animal);
+  let arrayAnimais = animalEncontrado.residents.filter((item) => item.sex === sexo);
+  console.log(arrayAnimais.length);
+}
+countAnimalsBySex('lions', 'male');
+
+function countEverything () {
+  let 
+}
 //module.exports = countAnimals;
