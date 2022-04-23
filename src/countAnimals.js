@@ -6,7 +6,7 @@ function countAnimalsBySpecie(especie) {
   return especieAchada.residents.length;
 }
 
-//find by sex
+//find by se
 function countAnimalsBySex(animal, sexo) {
   let animalEncontrado = species.find((item) => item.name === animal);
   let arrayAnimais = animalEncontrado.residents.filter((item) => item.sex === sexo);
