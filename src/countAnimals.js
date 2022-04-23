@@ -1,13 +1,21 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const objeto = data.species;
-const animals = Object.values(objeto);
+//contagem por especie
+/* function countAnimalsBySpecie (especie) { species.forEach(element => { 
+  if (element.name == Object.values(especie)){
+  console.log(element.residents.length)}});}
+countAnimalsBySpecie({specie: 'tigers'}); */
 
-const countAnimals = (especie) => { console.log({name: especie});
-const contagem = (especie);
-}
+//contagem por especie e sexo
+const countAnimalsBySex = (sexo) => {species.forEach(element => {
+  const residentes = element.residents;
+  residentes.sex === Object.values(sexo) ? console.log('opa') : console.log('1')})};
 
-console.log(countAnimals('lions'));
+countAnimalsBySex({sex: 'female'});
 
-module.exports = countAnimals;
+//caso não haja parametro
+  /* if (especie.length = 0){ 
+    species.forEach(element => { console.log(element.name + ' ' + element.residents.length)})} */
+
+//module.exports = countAnimals;
