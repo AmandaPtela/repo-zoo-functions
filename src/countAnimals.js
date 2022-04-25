@@ -11,7 +11,7 @@ function countAnimalsBySpecie(especie) {
 function countAnimalsBySex(animal, sexo) {
   const animalEncontrado = species.find((item) => item.name === animal);
   const arrayAnimais = animalEncontrado.residents.filter(
-    (item) => item.sex === sexo ,
+    (item) => item.sex === sexo,
   );
   return arrayAnimais.length;
 }

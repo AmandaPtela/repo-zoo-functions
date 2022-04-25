@@ -6,7 +6,7 @@ function getEmployeeByName(employeeName) {
     return {};
   }
   return employees.find(
-    (i) => i.firstName === employeeName || i.lastName === employeeName
+    (i) => i.firstName === employeeName || i.lastName === employeeName,
   );
 }
 
