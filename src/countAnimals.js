@@ -18,9 +18,9 @@ function countAnimalsBySex(animal, sexo) {
 
 // sem parametro;
 function countEverything() {
-  const reduzido = species.reduce((acumulador, item) => {
-    acumulador[item.name] = countAnimalsBySpecie(item.name);
-    return acumulador;
+  const reduzido = species.reduce((acc, item) => {
+    acc[item.name] = countAnimalsBySpecie(item.name);
+    return acc;
   }, {});
   return reduzido;
 }
