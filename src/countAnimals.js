@@ -1,12 +1,13 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
+// By specie
 function countAnimalsBySpecie(especie) {
   const especieAchada = species.find((item) => item.name === especie);
   return especieAchada.residents.length;
 }
 
-// find by se
+// By sex
 function countAnimalsBySex(animal, sexo) {
   const animalEncontrado = species.find((item) => item.name === animal);
   const arrayAnimais = animalEncontrado.residents.filter(
@@ -15,7 +16,7 @@ function countAnimalsBySex(animal, sexo) {
   return arrayAnimais.length;
 }
 
-// countAnimalsBySex('lions', 'male');
+// sem parametro;
 function countEverything() {
   const reduzido = species.reduce((acumulador, item) => {
     acumulador[item.name] = countAnimalsBySpecie(item.name);
@@ -24,7 +25,7 @@ function countEverything() {
   return reduzido;
 }
 
-// countEverything();
+// Função principal
 function countAnimals(object) {
   if (!object) {
     return countEverything();
