@@ -1,18 +1,19 @@
 const { prices } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function countEntrants(entrants){
-  let obj = {child: 0, adult: 0, senior: 0};
+function countEntrants(entrants) {
+  let obj = { child: 0, adult: 0, senior: 0 };
   entrants.forEach((item) => {
-  if (item.age < 18) {
-    obj.child += 1;
-  }
-  if (item.age >= 18 && item.age < 50){
-    obj.adult += 1;
-  }
-  else if (item.age >= 50){
-    obj.senior += 1;
-  }});
+    if (item.age < 18) {
+      obj.child += 1;
+    }
+    if (item.age >= 18 && item.age < 50) {
+      obj.adult += 1;
+    }
+    else if (item.age >= 50) {
+      obj.senior += 1;
+    }
+  });
   return obj;
 }
 
@@ -20,7 +21,7 @@ function calculateEntry(entrants) {
   if (!entrants || Object.keys(entrants).length === 0) {
     return 0;
   }
-  
+
   const ObjetoQuantidade = countEntrants(entrants);
 
   let totalCrianca = ObjetoQuantidade.child * prices.child;
