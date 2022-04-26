@@ -3,7 +3,7 @@ const data = require('../data/zoo_data');
 
 function countEntrants(entrants){
   let obj = {child: 0, adult: 0, senior: 0};
-  entrants.forEach(item => {
+  entrants.forEach((item) => {
   if (item.age < 18) {
     obj.child += 1;
   }
@@ -13,26 +13,21 @@ function countEntrants(entrants){
   else if (item.age >= 50){
     obj.senior += 1;
   }});
-  return(obj);
+  return obj;
 }
-countEntrants([
-  { name: 'Ana', age: 5 },
-  { name: 'Edna', age: 5 },
-  { name: 'Vivian', age: 5 },
-  { name: 'Maria', age: 18 },
-  { name: 'Felipe', age: 18 },
-  { name: 'Ramon', age: 50 },
-]);
 
 function calculateEntry(entrants) {
- let objQuantidade = countEntrants(entrants);
+  if (!entrants || Object.keys(entrants).length === 0) {
+    return 0;
+  }
+  
+  const ObjetoQuantidade = countEntrants(entrants);
 
- entrants.forEach((item) => { 
-   if (Object.keys(objQuantidade) === 'child') {
-    let result = Object.values(objQuantidade) * prices.child;
-    console.log(result);
- };
-})};
+  let totalCrianca = ObjetoQuantidade.child * prices.child;
+  let totalAdulto = ObjetoQuantidade.adult * prices.adult;
+  let totalIdoso = ObjetoQuantidade.senior * prices.senior;
+  return totalCrianca + totalAdulto + totalIdoso;
+}
 calculateEntry([
   { name: 'Ana', age: 5 },
   { name: 'Edna', age: 5 },
