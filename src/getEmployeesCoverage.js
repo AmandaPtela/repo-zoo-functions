@@ -1,10 +1,31 @@
 const { species, employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
+const pegarNome = (id) => species.find((specie) => specie.id === id).name;
+const localidade  = (id) => species.find((specie) => specie.id === id).location;
+
+function semParametro () {
+  const array = [];
+  employees.forEach((cada) => {
+    array.push({
+      id: cada.id ,
+      fullName: `${cada.firstName} ${cada.lastName}` ,
+      species: cada.responsibleFor.map((animal) => pegarNome(animal)) ,
+      locations: cada.responsibleFor.map((local) => localidade(local)) ,
+    })
+  })
+  return array;
+}
+
 function getEmployeesCoverage(obj) {
-  const funcionario = employees.find((item) =>
-    item.firstName === obj.name || item.lastName === obj.name || item.id === obj.id);
-  if (!funcionario) {
+  // sem parametro
+  if (typeof obj === 'undefined') {
+    return semParametro();
+  }
+  
+  const funcionario = employees.find((trbalhador) =>
+  trbalhador.firstName === obj.name || trbalhador.lastName === obj.name || trbalhador.id === obj.id);
+  if (typeof funcionario === 'undefined') {
     throw new Error('Informações inválidas');
   }
 
@@ -24,19 +45,5 @@ function getEmployeesCoverage(obj) {
       locations: localizacao.map((item) => item.location),
     };
   }
-  // sem param
-  if (typeof obj === 'undefined') {
-    const arraay = [];
-    employees.forEach((i) => {
-      arraay.push({
-        id: funcionario.id,
-        fullName: `${funcionario.firstName} ${funcionario.lastName}`,
-        species: animais.map((item) => item.name),
-        locations: localizacao.map((indice) => indice.location),
-      });
-    });
-    return arraay;
-  }
 }
-getEmployeesCoverage({ name: 'Nigel' });
 module.exports = getEmployeesCoverage;
