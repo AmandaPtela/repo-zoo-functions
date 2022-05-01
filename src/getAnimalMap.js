@@ -11,7 +11,7 @@ function semParam () {
 }
 //console.log(semParam());
 
-function comNome (nome) {
+/* function comNome (nome) {
   const nomeAnimal = species.filter((item) => nome.includes(item.name));
   const moradores = nomeAnimal.filter((elemento) => elemento.residents);
   const cada = moradores.filter((item) => item.name === 'otters')
@@ -26,7 +26,7 @@ function comNome (nome) {
 }
 comNome(['lions','tigers','bears','penguins','otters',
 'frogs','snakes','elephants','giraffes'
-]);
+]); */
 
 
 function getAnimalMap(options) {
@@ -40,12 +40,12 @@ function getAnimalMap(options) {
 
   if (options.includesName) {
     return {
-      NE: species.filter(({ location }) => location === 'NE').map((animal) => animal.name),
-      NW: species.filter(({ location }) => location === 'NW').map((animal) => animal.name),
-      SE: species.filter(({ location }) => location === 'SE').map((animal) => animal.name),
-      SW: species.filter(({ location }) => location === 'SW').map((animal) => animal.name),
+      NE: species.filter(({ location }) => location === 'NE').reduce(({residents}) => residents),//.map((item) => item.name),
+      NW: species.filter(({ location }) => location === 'NW').reduce(({residents}) => residents),//.map((item) => item.name),
+      SE: species.filter(({ location }) => location === 'SE').reduce(({residents}) => residents),//.map((item) => item.name),
+      SW: species.filter(({ location }) => location === 'SW').reduce(({residents}) => residents),//.map((item) => item.name),
     }
   }
 }
-//console.log(getAnimalMap({sorted: true , sex: 'female'}));
+console.log(getAnimalMap({includesName: true , sex: 'female'}));
 module.exports = getAnimalMap;
