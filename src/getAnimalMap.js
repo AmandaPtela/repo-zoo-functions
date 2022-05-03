@@ -10,26 +10,22 @@ function semParam () {
   }
 }
 //console.log(semParam());
-
-/* function comNome (nome) {
-  const nomeAnimal = species.filter((item) => nome.includes(item.name));
-  const moradores = nomeAnimal.filter((elemento) => elemento.residents);
-  const cada = moradores.filter((item) => item.name === 'otters')
-  const repetir = cada.forEach((otters) => {
-    let i = 0;
-  const nomess = moradores.reduce((acc, item) => {
-    acc[item.name] = moradores[i].residents.map((item) => item.name);
-    i +=1;
-    return acc;
-  }, {});
-  console.log(nomess);})
+function animaisPoNome (animal) {
+  return species.filter((item) => item.name === animal).reduce((acc , item) => { 
+    acc[item.name] = item.residents.map((item)=> item.name); 
+    return acc; 
+    } , {} );
 }
-comNome(['lions','tigers','bears','penguins','otters',
-'frogs','snakes','elephants','giraffes'
-]); */
-
+//console.log(animaisPoNome('tigers'));
 
 function getAnimalMap(options) {
+  const animaisNE = species.filter(({ location }) => location === 'NE').filter(({residents}) => residents).map((item) => item.name);
+  const animaisNW = species.filter(({ location }) => location === 'NW').filter(({residents}) => residents).map((item) => item.name);
+  const animaisSE = species.filter(({ location }) => location === 'SE').filter(({residents}) => residents).map((item) => item.name); 
+  const animaisSW = species.filter(({ location }) => location === 'SW').filter(({residents}) => residents).map((item) => item.name);
+  const residentes = species.filter((specie) => specie.location === 'NE');
+
+  
   const semParametro = semParam();
   if (!options) {
     return semParametro;
@@ -39,13 +35,55 @@ function getAnimalMap(options) {
   }
 
   if (options.includesName) {
+    //const residentes = animaisPoNome('lions , giraffes');
     return {
-      NE: species.filter(({ location }) => location === 'NE').reduce(({residents}) => residents),//.map((item) => item.name),
-      NW: species.filter(({ location }) => location === 'NW').reduce(({residents}) => residents),//.map((item) => item.name),
-      SE: species.filter(({ location }) => location === 'SE').reduce(({residents}) => residents),//.map((item) => item.name),
-      SW: species.filter(({ location }) => location === 'SW').reduce(({residents}) => residents),//.map((item) => item.name),
+      NE: species.filter((item) => animaisNE.includes(item.name)).reduce((acc , item) => { 
+        const obj = {};
+        obj[item.name] = residentes.filter((item)=>item.name); 
+        acc.push(obj);
+        return acc; 
+        } , [] ),
+      NW: species.filter((item) => animaisNW.includes(item.name)).reduce((acc , item) => { 
+        const obj = {};
+        obj[item.name] = residentes; 
+        acc.push(obj);
+        return acc; 
+        } , [] ),
+      SE: species.filter((item) => animaisSE.includes(item.name)).reduce((acc , item) => { 
+        const obj = {};
+        obj[item.name] = residentes; 
+        acc.push(obj);
+        return acc; 
+        } , [] ),
+      SW: species.filter((item) => animaisSW.includes(item.name)).reduce((acc , item) => { 
+        const obj = {};
+        obj[item.name] = residentes; 
+        acc.push(obj);
+        return acc; 
+        } , [] ),
     }
   }
+
+/*   if(options.sorted){
+    return {
+      NE: species.filter((item) => animaisNE.includes(item.name)).reduce((acc, item) => {
+        acc[item.name] = item.residents.map((item) => item.name).sort();
+        return acc;
+      } , {} ),
+      NW: species.filter((item) => animaisNW.includes(item.name)).reduce((acc, item) => {
+        acc[item.name] = item.residents.map((item) => item.name).sort();
+        return acc;
+      } , {} ),
+      SE: species.filter((item) => animaisSE.includes(item.name)).reduce((acc, item) => {
+        acc[item.name] = item.residents.map((item) => item.name).sort();
+        return acc;
+      } , {} ),
+      SW: species.filter((item) => animaisSW.includes(item.name)).reduce((acc, item) => {
+        acc[item.name] = item.residents.map((item) => item.name).sort();
+        return acc;
+      } , {} ),
+    }
+  } */
 }
-console.log(getAnimalMap({includesName: true , sex: 'female'}));
+console.log(getAnimalMap({includesName: true}));
 module.exports = getAnimalMap;
